@@ -1,6 +1,6 @@
 appcenter codepush deployment list -a Fatema-Patel/AppCenter 
 appcenter codepush release-react -a Fatema-Patel/AppCenter -d Production
-appcenter codepush release -a Fatema-Patel/AppCenter updateContents ">1.1.1".
+appcenter codepush release -a Fatema-Patel/AppCenter -t ">1.1.1".
 appcenter codepush release -a <ownerName>/<appName> -c <updateContentsPath> -t <targetBinaryVersion> -d <deploymentName>
 
 [-t|--target-binary-version <version>]
