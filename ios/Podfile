@@ -1,0 +1,37 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'appCenter' do
+  pod 'AppCenter/Crashes', '~> 2.0.1'
+  pod 'AppCenter/Analytics', '~> 2.0.1'
+  pod 'AppCenterReactNativeShared', '~> 2.0.0'
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for appCenter
+
+  platform :ios, '9.0'
+  
+
+
+  pod 'CodePush', :path => '../node_modules/react-native-code-push'
+
+  target 'appCenterTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'appCenter-tvOS' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for appCenter-tvOS
+
+  target 'appCenter-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
