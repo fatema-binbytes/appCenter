@@ -1,24 +1,16 @@
-import React, { Component } from 'react'
-import {
-  Image,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native'
+import React,{Component} from 'react'
+import AppStack from './src/navigation'
 
 import CodePush from 'react-native-code-push'
 
 class App extends Component {
-  constructor() {
-    super()
-    this.state = { syncMessage: '' }
-  }
+ 
   componentDidMount() {
    
     this.sync()
   }
   codePushStatusDidChange(syncStatus) {
-    console.log(syncStatus)
+   
     switch (syncStatus) {
       case CodePush.SyncStatus.CHECKING_FOR_UPDATE:
         this.setState({ syncMessage: 'Checking for update.' })
@@ -62,58 +54,17 @@ class App extends Component {
       { installMode: CodePush.InstallMode.IMMEDIATE, updateDialog: true },
       this.codePushStatusDidChange()
     )
-    // CodePush.checkForUpdate()
-    // .then((remotePackage)=>{
-    //   console.log(remotePackage)
-    //    CodePush.sync(
-    //         { installMode: CodePush.InstallMode.IMMEDIATE, updateDialog: true },
-    //         this.codePushStatusDidChange()
-    //       )
-    //     }
-    // )
-    CodePush.allowRestart()
-    
   }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>CodePush is added ^_^</Text>
-        <Text>Hello world </Text>
-        <Text style={styles.messages}>{this.state.syncMessage}</Text>
-        
-      </View>
+  render(){
+    return( 
+      <AppStack/>
     )
   }
+ 
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    paddingTop: 50
-  },
-
-  messages: {
-    marginTop: 30,
-    textAlign: 'center'
-  },
-
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 20
-  }
-})
-
-/**
- * Configured with a MANUAL check frequency for easy testing. For production apps, it is recommended to configure a
- * different check frequency, such as ON_APP_START, for a 'hands-off' approach where CodePush.sync() does not
- * need to be explicitly called. All options of CodePush.sync() are also available in this decorator.
- */
 let codePushOptions = { checkFrequency: CodePush.CheckFrequency.MANUAL }
 
 App = CodePush(codePushOptions)(App)
 
 export default App
+

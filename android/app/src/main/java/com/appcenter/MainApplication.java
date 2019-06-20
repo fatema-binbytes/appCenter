@@ -3,6 +3,7 @@ package com.appcenter;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.microsoft.codepush.react.CodePush;
 
 import com.microsoft.appcenter.reactnative.crashes.AppCenterReactNativeCrashesPackage;
@@ -37,6 +38,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNGestureHandlerPackage(),
           new CodePush("jr9UQl2dfuBBsIe3Uo3CrM-re8IZBJMgWG81S", getApplicationContext(),    BuildConfig.DEBUG),
             //new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), BuildConfig.DEBUG),
             new AppCenterReactNativeCrashesPackage(MainApplication.this, getResources().getString(R.string.appCenterCrashes_whenToSendCrashes)),
