@@ -8,13 +8,13 @@ import {
 } from 'react-native'
 
 
-class Test extends Component {
+class Test2 extends Component {
   
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>this is Test screen ^_^</Text>
-        <Button title={"Go Test"} onPress={()=>this.props.navigation.navigate('Test2')}/>
+        <Text style={styles.welcome}>The Third screen ^_^</Text>
+        <Button title={"Go Back"} onPress={()=>this.props.navigation.goBack()}/>
        
       </View>
     )
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
  * need to be explicitly called. All options of CodePush.sync() are also available in this decorator.
  */
 
-export default Test
+export default Test2
