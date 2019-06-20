@@ -5,9 +5,11 @@ import CodePush from 'react-native-code-push'
 
 class App extends Component {
  
+  constructor(){
+    super()
+  }
   componentDidMount() {
-   
-    this.sync()
+   this.sync()
   }
   codePushStatusDidChange(syncStatus) {
    
