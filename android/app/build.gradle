@@ -111,20 +111,20 @@ android {
        
     }
     signingConfigs {
-        releaseSigningConfig {
-            storeFile rootProject.file("app/my-upload-key.keystore")
-            storePassword System.getenv("MYAPP_UPLOAD_STORE_PASSWORD")
-            keyAlias System.getenv("MYAPP_UPLOAD_KEY_ALIAS")
-            keyPassword System.getenv("MYAPP_UPLOAD_KEY_PASSWORD")
-        }
-        // release {
-        //     if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
-        //         storeFile rootProject.file("app/" + project.findProperty('MYAPP_UPLOAD_STORE_FILE') ?: "ANDROID_STORE_FILE_NOT_SET")
-        //         storePassword project.findProperty('MYAPP_UPLOAD_STORE_PASSWORD') ?: "ANDROID_STORE_PASSWORD_NOT_SET"
-        //         keyAlias project.findProperty('MYAPP_UPLOAD_KEY_ALIAS') ?: "ANDROID_KEY_ALIAS_NOT_SET"
-        //         keyPassword project.findProperty('MYAPP_UPLOAD_KEY_PASSWORD') ?: "ANDROID_KEY_PASSWORD_NOT_SET"
-        //     }
-       // }
+        // releaseSigningConfig {
+        //     storeFile rootProject.file("app/my-upload-key.keystore")
+        //     storePassword System.getenv("MYAPP_UPLOAD_STORE_PASSWORD")
+        //     keyAlias System.getenv("MYAPP_UPLOAD_KEY_ALIAS")
+        //     keyPassword System.getenv("MYAPP_UPLOAD_KEY_PASSWORD")
+        // }
+        release {
+            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+                storeFile rootProject.file("app/" + project.findProperty('MYAPP_UPLOAD_STORE_FILE') ?: "ANDROID_STORE_FILE_NOT_SET")
+                storePassword project.findProperty('MYAPP_UPLOAD_STORE_PASSWORD') ?: "ANDROID_STORE_PASSWORD_NOT_SET"
+                keyAlias project.findProperty('MYAPP_UPLOAD_KEY_ALIAS') ?: "ANDROID_KEY_ALIAS_NOT_SET"
+                keyPassword project.findProperty('MYAPP_UPLOAD_KEY_PASSWORD') ?: "ANDROID_KEY_PASSWORD_NOT_SET"
+            }
+       }
      
     
     }
@@ -138,7 +138,7 @@ android {
     }
     buildTypes {
         release {
-             signingConfig signingConfigs.releaseSigningConfig
+             signingConfig signingConfigs.release
             
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
