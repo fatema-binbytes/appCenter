@@ -113,9 +113,9 @@ android {
     signingConfigs {
         releaseSigningConfig {
             storeFile rootProject.file("app/my-upload-key.keystore")
-            storePassword System.getenv("APPCENTER_KEYSTORE_PASSWORD")
-            keyAlias System.getenv("APPCENTER_KEY_ALIAS")
-            keyPassword System.getenv("APPCENTER_KEY_PASSWORD")
+            storePassword System.getenv("MYAPP_UPLOAD_STORE_PASSWORD")
+            keyAlias System.getenv("MYAPP_UPLOAD_KEY_ALIAS")
+            keyPassword System.getenv("MYAPP_UPLOAD_KEY_PASSWORD")
         }
         // release {
         //     if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
